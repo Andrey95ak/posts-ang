@@ -1,0 +1,48 @@
+.posts__header {
+   display: flex;
+   margin-bottom: 20px;
+}
+
+.posts__filter{
+   margin-left: 40px;
+   display: flex;
+   flex-direction: column;
+   max-width: 200px;
+}
+
+.posts__btn {
+   margin-top: 24px;
+}
+
+.posts__btn--create {
+   margin-top: 6px;
+   background-color: #000;
+   color: #fff;
+   cursor: pointer;
+   border-radius: 22px;
+   padding: 4px;
+   margin-left: 20px;
+   border-color: #1f1f1f;
+}
+
+input {
+   margin-top: 10px;
+}
+
+.post__list {
+   max-width: 800px;
+}
+
+.post__item {
+   border: 2px solid teal;
+   margin-top: 5px;
+   list-style: none;
+   padding: 10px;
+   margin-bottom: 16px;
+}
+
+.btn-info {
+
+      margin-left: 10px;
+   
+}

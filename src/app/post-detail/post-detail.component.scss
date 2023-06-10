@@ -1,0 +1,17 @@
+.comments__wrapper {
+   display: flex;
+   flex-direction: column;
+}
+
+.post__content {
+   margin-left: 30px;
+   margin-bottom: 15px;
+}
+
+h2 {
+   margin-left: 30px;
+}
+
+.comments__item {
+   list-style: none;
+}

@@ -1,0 +1,16 @@
+<ng-container>
+   <div class="comments__wrapper">
+      <div class="post__content" *ngIf="post">
+         <span>Id Поста {{ post.id }}</span>
+         <h3>{{ post.title }}</h3>
+      </div>
+
+      <h2>Комментарии:</h2>
+      <ul *ngFor="let comment of comments">
+         <li class="comments__item" *ngIf="comment">
+            <p>{{ comment.email }}</p>
+            <h5>{{ comment.body }}</h5>
+         </li>
+      </ul>
+   </div>
+</ng-container>

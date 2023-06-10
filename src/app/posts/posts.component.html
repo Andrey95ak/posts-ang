@@ -1,0 +1,55 @@
+<div class="posts__header">
+   <div class="posts__filter">
+      <label>Введите название поста</label>
+      <input id="id" [(ngModel)]="search" />
+   </div>
+   <div class="posts__btn">
+      <button class="posts__btn--create" (click)="showModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать пост</button>
+   </div>
+</div>
+
+<h1 *ngIf="loading">Идёт загрузка постов...</h1>
+
+<ng-container *ngIf="postsData$ | async">
+   <ul class="post__list" *ngIf="(displayedData | filter:search) as result">
+      <li class="post__item" *ngFor="let post of result">
+         <span>{{ post.id }}</span>
+         <p>{{ post.title }}</p>
+         <p>{{ post.body }}</p>
+         <button class="btn btn-dark" (click)="deletePost(post.id)">Удалить пост</button>
+         <a href="#" [routerLink]="['/post/', post.id]" class="btn btn-info">Открыть пост</a>
+      </li>
+      <h3 *ngIf="result.length === 0">Посты не найдены</h3>
+   </ul>
+</ng-container>
+
+<!-- Pagination -->
+<app-pagination [allPagesNumber]="allPages" (changePage)="onPageChange($event)"></app-pagination>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title">Создать пост</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+               <form [formGroup]="form">
+                   <div class="mb-3">
+                       <label for="exampleInputTitle" class="form-label">Введите название поста</label>
+                       <input type="text" formControlName="title" class="form-control">
+                   </div>
+                   <div class="mb-3">
+                       <label for="exampleInputBody" class="form-label">Введите описание поста</label>
+                       <input type="text" formControlName="body" class="form-control">
+                   </div>
+               </form>
+           </div>
+           <div class="modal-footer">
+               <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               <button [disabled]="!form.valid" type="button" *ngIf="showAdd" class="btn btn-primary" (click)="createPost()">Add</button>
+           </div>
+       </div>
+   </div>
+</div>
